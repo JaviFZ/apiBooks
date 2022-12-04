@@ -31,11 +31,11 @@ function postRegistro (request, response)
 
 function postLogin(request, response) 
 {
-    let sql;
-    if (request.query.id == null)
-        sql = "SELECT * FROM studients";
-    else
-        sql = "SELECT * FROM studients WHERE id_studient=" + request.query.id;
+    let sql = `SELECT id_usuario, nombre, apellidos, correo, foto FROM usuario WHERE correo='${request.body.correo}' AND password='${request.body.password}'`;
+    // if (request.query.id == null)
+    //     sql = "SELECT * FROM studients";
+    // else
+    //     sql = "SELECT * FROM studients WHERE id_studient=" + request.query.id;
      
     connection.query(sql, function (err, result)
     {
@@ -43,7 +43,12 @@ function postLogin(request, response)
             console.log(err);
         else
         {
-            response.send(result);
+            // response.send(result);
+            if(result.length>0){
+                response.send(result[0])
+            } else {
+                response.send({error:"Los datos no coinciden"});
+            }
         }    
     })  
 };

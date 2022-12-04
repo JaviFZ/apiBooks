@@ -5,8 +5,10 @@ const usuarioCtrl = require("../controller/usuario.controller")
 
 
 
-router.post("/registro", usuarioCtrl.postUsuario);
+router.post("/registro", usuarioCtrl.postRegistro);
 
+
+router.post("/login", usuarioCtrl.postLogin);
 
 
 
