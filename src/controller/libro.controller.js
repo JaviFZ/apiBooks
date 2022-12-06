@@ -2,8 +2,8 @@ const connection = require("../database")
 
 function getLibros(request, response)
 {
-    let id_libro = null;
-    if(id_libro == "" ){
+    
+    if(!request.query.id_libro ){
         let sql = `SELECT * FROM libro WHERE id_usuario='${request.query.id_usuario}'`;
         connection.query(sql, function (err, result)
         {
