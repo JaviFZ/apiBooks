@@ -32,10 +32,7 @@ function postRegistro (request, response)
 function postLogin(request, response) 
 {
     let sql = `SELECT id_usuario, nombre, apellidos, correo, foto FROM usuario WHERE correo='${request.body.correo}' AND password='${request.body.password}'`;
-    // if (request.query.id == null)
-    //     sql = "SELECT * FROM studients";
-    // else
-    //     sql = "SELECT * FROM studients WHERE id_studient=" + request.query.id;
+    
      
     connection.query(sql, function (err, result)
     {
