@@ -43,6 +43,7 @@ function postLogin(request, response)
             // response.send(result);
             if(result.length>0){
                 response.send(result[0])
+                console.log(result);
             } else {
                 response.send({error:"Los datos no coinciden"});
             }
